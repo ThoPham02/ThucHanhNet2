@@ -3,6 +3,24 @@
     font-size: 18px;
 }
 
-#header {
+.blue {
     color: blue;
+}
+
+.center {
+    text-align: center;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.green-table {
+    background-color: rgb(98, 251, 141);
+    box-shadow: 2px 2px 2px #000;
+    border: 1px solid #000;
+}
+
+td, th {
+    border: 1px solid #000;
 }
