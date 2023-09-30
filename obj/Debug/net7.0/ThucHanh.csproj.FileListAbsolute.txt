@@ -1,0 +1,14 @@
+D:\thoah\dev\Net2\ThucHanh\bin\Debug\net7.0\ThucHanh.exe
+D:\thoah\dev\Net2\ThucHanh\bin\Debug\net7.0\ThucHanh.deps.json
+D:\thoah\dev\Net2\ThucHanh\bin\Debug\net7.0\ThucHanh.runtimeconfig.json
+D:\thoah\dev\Net2\ThucHanh\bin\Debug\net7.0\ThucHanh.dll
+D:\thoah\dev\Net2\ThucHanh\bin\Debug\net7.0\ThucHanh.pdb
+D:\thoah\dev\Net2\ThucHanh\obj\Debug\net7.0\ThucHanh.GeneratedMSBuildEditorConfig.editorconfig
+D:\thoah\dev\Net2\ThucHanh\obj\Debug\net7.0\ThucHanh.AssemblyInfoInputs.cache
+D:\thoah\dev\Net2\ThucHanh\obj\Debug\net7.0\ThucHanh.AssemblyInfo.cs
+D:\thoah\dev\Net2\ThucHanh\obj\Debug\net7.0\ThucHanh.csproj.CoreCompileInputs.cache
+D:\thoah\dev\Net2\ThucHanh\obj\Debug\net7.0\ThucHanh.dll
+D:\thoah\dev\Net2\ThucHanh\obj\Debug\net7.0\refint\ThucHanh.dll
+D:\thoah\dev\Net2\ThucHanh\obj\Debug\net7.0\ThucHanh.pdb
+D:\thoah\dev\Net2\ThucHanh\obj\Debug\net7.0\ThucHanh.genruntimeconfig.cache
+D:\thoah\dev\Net2\ThucHanh\obj\Debug\net7.0\ref\ThucHanh.dll

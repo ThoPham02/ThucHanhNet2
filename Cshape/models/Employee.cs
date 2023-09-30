@@ -1,27 +1,36 @@
 namespace Cshape.models
 {
-    public class Employee {
-        public int ID {get; set;}
-        public string Fullname {get; set;}
-        public int Age {get; set;}
+    public class Employee : Person{
         public int Salary {get; set;}
 
-        public void enterInfo(int id, string name, int age, int salary) {
-            System.Console.Write("Nhap Ma NV: ");
-            ID  = Convert.ToInt16(Console.ReadLine());
-            System.Console.WriteLine("Nhap Ten NV: ");
-            fullname = Console.ReadLine();
-            System.Console.WriteLine("Nhap Tuoi: ");
-            age = Convert.ToInt16(Console.ReadLine());
-            System.Console.WriteLine("Nhap Luong: ");
-            salary = Convert.ToInt16(Console.ReadLine());
+        public Employee(){
+            this.ID = 0;
+            this.Fullname = "";
+            this.Age = 0;
+            this.Salary = 0;
         }
 
-        public void showInfo() {
-            System.Console.WriteLine("Ma NV = {0}", id);
-            System.Console.WriteLine("Ten NV = {0}", fullname);
-            System.Console.WriteLine("Tuoi = {0}", age);
-            System.Console.WriteLine("Luong = {0}", salary);
+        
+        public void EnterInfo() {
+            Console.Write("Nhap Ma NV: ");
+            ID  = Convert.ToInt16(Console.ReadLine());
+            Console.Write("Nhap Ten NV: ");
+            Fullname = Console.ReadLine();
+            Console.Write("Nhap Tuoi: ");
+            Age = Convert.ToInt16(Console.ReadLine());
+            Console.Write("Nhap Luong: ");
+            Salary = Convert.ToInt16(Console.ReadLine());
+        }
+
+        public void Changeinfo(int id, string? fullname, int age, int salary) {
+            this.ID = id;
+            this.Fullname = fullname;
+            this.Age = age;
+            this.Salary = salary;
+        }
+
+        public void ShowInfo() {
+            Console.WriteLine("Nhan vien: {0} Ten: {1} Tuoi: {2} Luong: {3}", ID, Fullname, Age, Salary);
         }
     }
 }
