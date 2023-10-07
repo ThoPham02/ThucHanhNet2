@@ -1,8 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<form asp-action="Index">
+    <h1>Giải phương trình bậc 2: aX2 + bX + c = 0</h1>
+    <input type="number" name="a" placeholder="Nhập a">
+    <input type="number" name="b" placeholder="Nhập b">
+    <input type="number" name="c" placeholder="Nhập c">
+    <input type="submit" value="Giải">
+</form>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>@ViewBag.result</h2>
+
