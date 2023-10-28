@@ -28,3 +28,7 @@ D:\thoah\dev\Net2\ThucHanh\MVCProject\obj\Debug\net7.0\refint\MVCProject.dll
 D:\thoah\dev\Net2\ThucHanh\MVCProject\obj\Debug\net7.0\MVCProject.pdb
 D:\thoah\dev\Net2\ThucHanh\MVCProject\obj\Debug\net7.0\MVCProject.genruntimeconfig.cache
 D:\thoah\dev\Net2\ThucHanh\MVCProject\obj\Debug\net7.0\ref\MVCProject.dll
+D:\thoah\dev\Net2\ThucHanh\MVCProject\obj\Debug\net7.0\MVCProject.csproj.AssemblyReference.cache
+D:\thoah\dev\Net2\ThucHanh\MVCProject\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+D:\thoah\dev\Net2\ThucHanh\MVCProject\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\thoah\dev\Net2\ThucHanh\MVCProject\obj\Debug\net7.0\MVCProject.csproj.CopyComplete

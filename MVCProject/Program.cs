@@ -1,4 +1,9 @@
+using MVCProject.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        // options.UseSQlite(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
