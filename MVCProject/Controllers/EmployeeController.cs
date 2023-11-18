@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVCProject.Data;
 using MVCProject.Models;
+using MVCProject.Models.Process;
 
 namespace MVCProject.Controllers
 {
     public class EmployeeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private ExcelProcess _excelPro = new ExcelProcess();
 
         public EmployeeController(ApplicationDbContext context)
         {
@@ -22,9 +24,9 @@ namespace MVCProject.Controllers
         // GET: Employee
         public async Task<IActionResult> Index()
         {
-              return _context.Employee != null ? 
-                          View(await _context.Employee.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Employee'  is null.");
+            return _context.Employee != null ?
+                        View(await _context.Employee.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Employee'  is null.");
         }
 
         // GET: Employee/Details/5
@@ -150,14 +152,55 @@ namespace MVCProject.Controllers
             {
                 _context.Employee.Remove(employee);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool EmployeeExists(int id)
         {
-          return (_context.Employee?.Any(e => e.EmplID == id)).GetValueOrDefault();
+            return (_context.Employee?.Any(e => e.EmplID == id)).GetValueOrDefault();
+        }
+        public async Task<IActionResult> Upload()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upload(IFormFile file)
+        {
+            if (file != null)
+            {
+                string fileExtension = Path.GetExtension(file.FileName);
+                if (fileExtension != ".xls" && fileExtension != ".xlsx")
+                {
+                    ModelState.AddModelError("", "Please choose excel file to upload!");
+                }
+                else
+                {
+                    //renanme file when upload to sever
+                    var fileName = DateTime.Now.ToShortTimeString() + fileExtension;
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory() + "/Uploads/Excels", fileName);
+                    var fileLocation = new FileInfo(filePath).ToString();
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        //save file to server 
+                        await file.CopyToAsync(stream);
+
+                        var dt = _excelPro.ExcelToDataTable(fileLocation);
+
+                        for (int i = 0; i < dt.Rows.Count; i++) {
+                            var employee = new Employee();
+
+                            employee.EmplName = dt.Rows[i][1].ToString();
+                        }
+
+                        await _context.SaveChangesAsync();
+                    }
+                }
+            }
+            return View();
         }
     }
+
 }
