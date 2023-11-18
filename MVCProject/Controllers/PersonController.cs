@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
+using MvcMovie.Models;
 using MVCProject.Data;
 
 namespace  MVCProject
@@ -11,20 +14,33 @@ namespace  MVCProject
             _context = context;
         }
 
-        public IActionResult Index() {
-            
+        public async Task<IActionResult> Index() {
+            var model = await _context.Person.ToListAsync();
 
+            return View(model);
+        }
+
+        public  IActionResult Create() {
             return View();
         }
-        public IActionResult Create() {
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Person ps) {
+            if (ModelState.IsValid) {
+                await _context.Person.AddAsync(ps);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            } else {
+                ModelState.AddModelError("", "Data error");
+            }
             return View();
         }
-        public IActionResult Update() {
+        public IActionResult Update() { 
             return View();
         }
         public IActionResult Delete() {
             return View();
         }
-
     }   
 }
