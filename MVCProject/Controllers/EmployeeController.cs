@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MVCProject.Data;
 using MVCProject.Models;
 using MVCProject.Models.Process;
+using X.PagedList;
 
 namespace MVCProject.Controllers
 {
@@ -22,11 +23,24 @@ namespace MVCProject.Controllers
         }
 
         // GET: Employee
-        public async Task<IActionResult> Index()
+         public async Task<IActionResult> Index(int? page, int? PageSize)
         {
-            return _context.Employee != null ?
-                        View(await _context.Employee.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.Employee'  is null.");
+            ViewBag.PageSize = new List<SelectListItem>()
+            {
+                new SelectListItem(){Value="3",Text="3"},
+                new SelectListItem(){Value="5",Text="5"},
+                new SelectListItem(){Value="10",Text="10"},
+                new SelectListItem(){Value="20",Text="20"},
+                new SelectListItem(){Value="50",Text="50"},
+                new SelectListItem(){Value="100",Text="100"},
+            };
+
+            int pageSize = (PageSize ?? 3);
+            ViewBag.pSize = pageSize;
+
+            var model = _context.Employee.ToList().ToPagedList(page ?? 1, pageSize);
+
+            return View(model);
         }
 
         // GET: Employee/Details/5
@@ -193,6 +207,7 @@ namespace MVCProject.Controllers
                             var employee = new Employee();
 
                             employee.EmplName = dt.Rows[i][1].ToString();
+                            _context.Add(employee);
                         }
 
                         await _context.SaveChangesAsync();
